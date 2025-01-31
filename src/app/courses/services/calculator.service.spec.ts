@@ -1,5 +1,6 @@
 import { CalculatorService } from "./calculator.service";
 import { LoggerService } from "./logger.service";
+import { TestBed } from '@angular/core/testing';
 
 describe("CalculatorService", () => {
 
@@ -8,7 +9,13 @@ describe("CalculatorService", () => {
     console.log("Calling beforeEach");
     loggerSpy = jasmine.createSpyObj("LoggerService", ["log"]); // create a spy object
 
-    caclulator = new CalculatorService(loggerSpy); // setup phase
+    TestBed.configureTestingModule({ 
+      providers:[
+        CalculatorService,
+        {provide: LoggerService, useValue: loggerSpy}
+      ]
+    });
+    caclulator = TestBed.inject(CalculatorService); // setup phase
   });
 
   it("should add two numbers", () => {
