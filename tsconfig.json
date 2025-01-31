@@ -16,6 +16,11 @@
       "es2017",
       "dom",
       "ES2017.object"
-    ]
-  }
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "@angular/*": ["node_modules/@angular/*"]
+    },
+    "skipLibCheck": true
+  },
 }
